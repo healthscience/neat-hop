@@ -1,0 +1,17 @@
+[package]
+name = "neat-hop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+burn = { version = "0.16", features = ["train", "ndarray"] }
+serde = { version = "1.0", features = ["derive"] }
+
+# Backend specific dependencies
+burn-ndarray = { version = "0.16", optional = true }
+burn-wgpu = { version = "0.16", optional = true }
+
+[features]
+default = ["ndarray-backend"]
+ndarray-backend = ["dep:burn-ndarray"]
+wgpu-backend = ["dep:burn-wgpu", "burn/wgpu"]
